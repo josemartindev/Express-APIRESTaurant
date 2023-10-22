@@ -21,18 +21,21 @@ mongoose.connect(
 ).then(() => console.log('Connected to MongoDB Atlas'));
 
 app.get('/api/main', async (req, res) => {
+    console.log('[GET /api/main] ', req.body);
     const meals = await Meal.find();
     res.status(200).send(meals);
 });
 
 app.delete('/api/main', async (req, res) => {
+    console.log('[DELETE /api/main] ', req.body);
     await Meal.deleteOne({ _id: req.body.id });
+    res.status(204).end();
 });
 
 app.post('/api/main', async (req, res) => {
     const { name, ingredients, category } = req.body;
-    
-    console.log(req.body);
+
+    console.log('[POST /api/main] ', req.body);
 
     const meal = new Meal({
         name,
@@ -43,11 +46,6 @@ app.post('/api/main', async (req, res) => {
     const savedMeal = await meal.save();
     
     res.status(201).send(savedMeal);
-});
-
-app.get('/', async (req, res) => {
-    const meals = await Meal.find();
-    res.status(200).send(meals);
 });
 
 app.listen(3000, () => console.log("Server is running"));
