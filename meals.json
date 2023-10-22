@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Lasagna",
+        "ingredients": ["Tomato", "Cheese", "Pasta"],
+        "category": "Main"
+    },
+    {
+        "name": "Sandwich",
+        "ingredients": ["Bread", "Ham", "Cheese", "Tomato", "Lettuce"],
+        "category": "Main"
+    }
+]
